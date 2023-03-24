@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -20,6 +21,10 @@ vector<pair<double,double>> inputXnY(int n, vector<pair<double,double>> XnY) {
 	system("clear");
 
 	return XnY;
+}
+
+double funk(double x) {
+	return sqrt(x);
 }
 
 double Lagrange(vector<pair<double,double>> XnY, double x) {
@@ -69,6 +74,12 @@ double Eitkin(vector<pair<double,double>> XnY, double x) {
 	return scheme.at(0).at(XnY.size() - 1);
 }
 
+double accuracy(double x, double y1) {
+
+		return funk(x) - y1;
+
+}
+
 int main() {
 
 	int n, var;
@@ -89,11 +100,11 @@ int main() {
 	switch (var) {
 	case 1:
 		Lagr = Lagrange(XnY,2.56);
-		cout << "| " << Lagr << " | ";
+		cout << "| " << Lagr << " | " << endl << "accuracy: " << accuracy(2.56, Lagr) << endl;
 		break;
 	case 2:
 		Eitk = Eitkin(XnY, 2.56);
-		cout << "| " << Eitk << " | ";
+		cout << "| " << Eitk << " | " << endl << "accuracy: " << accuracy(2.56,Eitk) << endl ;
 		break;
 	}
 
