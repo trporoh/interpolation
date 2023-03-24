@@ -51,7 +51,7 @@ double Eitkin(vector<pair<double,double>> XnY, double x) {
 				P *= (x - XnY[j].first) / (XnY[i].first - XnY[j].first);
 			}
 		}
-		scheme[i].push_back(XnY[i].second * P);
+		scheme[i].push_back(XnY[i].second);
 		cout << scheme[i].at(0) << "   ";
 	}
 	cout << endl;
@@ -88,11 +88,11 @@ int main() {
 
 	switch (var) {
 	case 1:
-		Lagr = Lagrange(XnY,2);
+		Lagr = Lagrange(XnY,2.56);
 		cout << "| " << Lagr << " | ";
 		break;
 	case 2:
-		Eitk = Eitkin(XnY, 2);
+		Eitk = Eitkin(XnY, 2.56);
 		cout << "| " << Eitk << " | ";
 		break;
 	}
